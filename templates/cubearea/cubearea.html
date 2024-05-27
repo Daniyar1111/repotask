@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаршы бетінің ауданын есептеу</title>
+</head>
+<body bgcolor = "white">
+    <h1>Шаршы бетінің ауданын есептеу</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if area is not None %}
+            <p>Шаршы бетінің ауданы: {{ area }}</p>
+        {% endif %}
+        <button type="submit" name="calculate">Орындау</button>
+        <button type="submit" name="clear">Тазарту</button>
+    </form>
+    <br>
+    <a href="/">Бастапқы бетке оралу</a>
+</body>
+</html>

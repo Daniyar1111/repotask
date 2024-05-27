@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Электр тізбегінің кедергісін есептеу</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .header {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 5px;
+        }
+        .form-group button {
+            width: 48%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"> Бастапқы мәліметтерді енгізіңіз: </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="r1">Бірінші кедергінің шамасы (Ом) -></label>
+                <input type="text" id="r1" name="r1" value="{{ r1 }}" required>
+            </div>
+            <div class="form-group">
+                <label for="r2">Екінші кедергінің шамасы (Ом) -></label>
+                <input type="text" id="r2" name="r2" value="{{ r2 }}" required>
+            </div>
+            <div class="form-group">
+                <label for="result">Тізбектің кедергісі (Ом) -></label>
+                <input type="text" id="result" name="result" value="{{ result }}" readonly>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="calculate">Орындау</button>
+                <button type="submit" name="clear">Тазарту</button>
+            </div>
+            {% if error %}
+                <div style="color: red;">{{ error }}</div>
+            {% endif %}
+            <br>
+            <a href="/">Бастапқы бетке оралу</a>
+        </form>
+    </div>
+</body>
+</html>

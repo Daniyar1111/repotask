@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Цилиндр көлемін есептеу</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .header {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 5px;
+        }
+        .form-group button {
+            width: 48%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"> Цилиндр көлемін есептеу: </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="radius">Табанының радиусы (см) -></label>
+                <input type="text" id="radius" name="radius" value="{{ radius }}" required>
+            </div>
+            <div class="form-group">
+                <label for="height">Биіктігі (см) -></label>
+                <input type="text" id="height" name="height" value="{{ height }}" required>
+            </div>
+            <div class="form-group">
+                <label for="result">Цилиндрдің көлемі (см. куб) -></label>
+                <input type="text" id="result" name="result" value="{{ result }}" readonly>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="calculate">Орындау</button>
+                <button type="submit" name="clear">Тазарту</button>
+            </div>
+            {% if error %}
+                <div style="color: red;">{{ error }}</div>
+            {% endif %}
+            <br>
+            <a href="/">Бастапқы бетке оралу</a>
+        </form>
+    </div>
+</body>
+</html>
